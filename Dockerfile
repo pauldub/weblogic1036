@@ -3,17 +3,17 @@ FROM unbc/oraclelinux6
 MAINTAINER Trevor Fuson "trevor.fuson@unbc.ca"
 
 # Java Download location. Note the build number is in the URL.
-# http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html
-ENV JAVA_MINOR_VERSION 71
-ENV JAVA_BUILD_NUMBER  14
-ENV JAVA_HOME          /usr/java/jdk1.7.0_$JAVA_MINOR_VERSION
+# http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase6-419409.html
+ENV JAVA_MINOR_VERSION 20
+ENV JAVA_BUILD_NUMBER  02
+ENV JAVA_HOME          /usr/java/jdk1.6.0_$JAVA_MINOR_VERSION
 ENV PATH               $JAVA_HOME/bin:$PATH
 
 # Install Java JDK without leaving behind temporary files
 RUN curl -v -j -k -L -H "Cookie: oraclelicense=accept-securebackup-cookie" \
- http://download.oracle.com/otn-pub/java/jdk/7u$JAVA_MINOR_VERSION-b$JAVA_BUILD_NUMBER/jdk-7u$JAVA_MINOR_VERSION-linux-x64.rpm > jdk-7u$JAVA_MINOR_VERSION-linux-x64.rpm && \
- rpm -ivh jdk-7u$JAVA_MINOR_VERSION-linux-x64.rpm && \
- rm jdk-7u$JAVA_MINOR_VERSION-linux-x64.rpm
+ http://download.oracle.com/otn-pub/java/jdk/6u$JAVA_MINOR_VERSION-b$JAVA_BUILD_NUMBER/jdk-6u$JAVA_MINOR_VERSION-linux-x64.rpm > jdk-6u$JAVA_MINOR_VERSION-linux-x64.rpm && \
+ rpm -ivh jdk-6u$JAVA_MINOR_VERSION-linux-x64.rpm && \
+ rm jdk-6u$JAVA_MINOR_VERSION-linux-x64.rpm
  
 ADD silent.xml          /u01/app/oracle/
 
